@@ -18,33 +18,46 @@ export default function Login() {
   };
 
   return (
-    <div style={{ maxWidth: '400px', margin: '100px auto', padding: '20px' }}>
-      <h2>CampusHire AI - Login</h2>
-      {error && <div style={{ color: 'red', marginBottom: '10px' }}>{error}</div>}
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          style={{ width: '100%', padding: '10px', marginBottom: '10px' }}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          style={{ width: '100%', padding: '10px', marginBottom: '10px' }}
-        />
-        <button type="submit" style={{ width: '100%', padding: '10px', background: '#007bff', color: 'white', border: 'none' }}>
-          Login
-        </button>
-      </form>
-      <p style={{ marginTop: '20px' }}>
-        Don't have an account? <Link to="/register">Register</Link>
-      </p>
+    <div className="auth-bg">
+      <div className="auth-card">
+        <div className="auth-logo">
+          <div className="auth-logo-icon">🎓</div>
+          <h2>CampusHire AI</h2>
+        </div>
+        <p className="auth-subtitle">Sign in to your account to continue</p>
+
+        {error && (
+          <div className="alert-error">
+            <span>⚠</span> {error}
+          </div>
+        )}
+
+        <form onSubmit={handleSubmit}>
+          <label className="form-label">Email address</label>
+          <input
+            type="email"
+            placeholder="you@example.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <label className="form-label">Password</label>
+          <input
+            type="password"
+            placeholder="••••••••"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <button type="submit" className="btn btn-primary" style={{ width: '100%', padding: '12px', fontSize: '15px', marginTop: '4px' }}>
+            Sign In
+          </button>
+        </form>
+
+        <p className="auth-footer-text">
+          Don't have an account? <Link to="/register">Create one</Link>
+        </p>
+      </div>
     </div>
   );
 }
